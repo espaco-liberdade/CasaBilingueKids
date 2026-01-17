@@ -4,18 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sumário - Casa Bilíngue Kids</title>
-    
     <style>
         /* Importando fontes do Google (Mesmas do livro) */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-
+        
         body {
             background-color: #f4f6f7;
             margin: 0;
             padding: 20px;
         }
-
+        
         /* Container Principal do Sumário */
         #sumario-livro { 
             font-family: 'Poppins', sans-serif;
@@ -30,7 +29,7 @@
             position: relative;
             overflow: hidden;
         }
-
+        
         /* Borda decorativa no topo */
         #sumario-livro::before {
             content: "";
@@ -41,7 +40,7 @@
             height: 8px;
             background: linear-gradient(90deg, #3498db, #e74c3c, #f1c40f, #27ae60, #8e44ad);
         }
-
+        
         /* Cabeçalho do Livro */
         .book-header {
             text-align: center;
@@ -49,7 +48,7 @@
             border-bottom: 2px dashed #bdc3c7;
             padding-bottom: 20px;
         }
-
+        
         .book-title { 
             color: #2c3e50;
             font-size: 36px; 
@@ -58,7 +57,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
-
+        
         .book-subtitle {
             color: #e67e22;
             font-size: 18px;
@@ -66,35 +65,34 @@
             margin-top: 5px;
             margin-bottom: 15px;
         }
-
+        
         .author-name {
             font-size: 14px;
             color: #7f8c8d;
             font-style: italic;
         }
-
+        
         .author-name strong {
             color: #34495e;
         }
-
+        
         /* Lista de Capítulos */
         .chapter-list {
             list-style: none;
             padding: 0;
         }
-
+        
         .chapter-item {
             background-color: #fff;
             margin-bottom: 12px;
             border-radius: 10px;
-            border-left: 5px solid #bdc3c7; /* Cor padrão, muda nos nth-child */
+            border-left: 5px solid #bdc3c7;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            /* Importante para o link funcionar bem */
             position: relative; 
             overflow: hidden;
         }
-
+        
         /* O Link cobre todo o item */
         .chapter-link {
             display: flex;
@@ -105,12 +103,12 @@
             width: 100%;
             height: 100%;
         }
-
+        
         .chapter-item:hover {
             transform: translateX(5px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-
+        
         .chapter-number {
             font-family: 'Fredoka One', cursive;
             font-size: 1.2em;
@@ -118,25 +116,25 @@
             min-width: 40px;
             margin-right: 15px;
         }
-
+        
         .chapter-title {
             font-weight: 600;
             font-size: 1.05em;
             flex-grow: 1;
             color: #34495e;
         }
-
+        
         .chapter-icon {
             font-size: 1.4em;
             margin-right: 15px;
         }
-
-        /* Cores alternadas para os capítulos (Padrão arco-íris suave) */
-        .chapter-item:nth-child(4n+1) { border-left-color: #3498db; background-color: #ebf5fb; } /* Azul */
-        .chapter-item:nth-child(4n+2) { border-left-color: #e74c3c; background-color: #fdedec; } /* Vermelho */
-        .chapter-item:nth-child(4n+3) { border-left-color: #f1c40f; background-color: #fef9e7; } /* Amarelo */
-        .chapter-item:nth-child(4n+4) { border-left-color: #27ae60; background-color: #eafaf1; } /* Verde */
-
+        
+        /* Cores alternadas */
+        .chapter-item:nth-child(4n+1) { border-left-color: #3498db; background-color: #ebf5fb; }
+        .chapter-item:nth-child(4n+2) { border-left-color: #e74c3c; background-color: #fdedec; }
+        .chapter-item:nth-child(4n+3) { border-left-color: #f1c40f; background-color: #fef9e7; }
+        .chapter-item:nth-child(4n+4) { border-left-color: #27ae60; background-color: #eafaf1; }
+        
         .chapter-item:nth-child(4n+1) .chapter-number { color: #3498db; }
         .chapter-item:nth-child(4n+2) .chapter-number { color: #e74c3c; }
         .chapter-item:nth-child(4n+3) .chapter-number { color: #f1c40f; }
@@ -146,14 +144,28 @@
         .chapter-item.aula-zero { border-left-color: #9b59b6; background-color: #f4ecf7; }
         .chapter-item.aula-zero .chapter-number { color: #9b59b6; }
 
+        /* Estilo para o Módulo de Sílabas - Destaque Especial */
+        .chapter-item.syllable-module { 
+            border-left: 8px solid #f39c12; 
+            background-color: #fff8e1; 
+            animation: pulse 2s infinite;
+        }
+        .chapter-item.syllable-module .chapter-number { color: #f39c12; font-size: 1.4em; }
+        .chapter-item.syllable-module .chapter-title { color: #d35400; font-weight: 700; }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(243, 156, 18, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(243, 156, 18, 0); }
+        }
+
         .footer-note {
             text-align: center;
             margin-top: 40px;
             font-size: 0.9em;
             color: #95a5a6;
         }
-
-        /* Área de Compatibilidade */
+        
         .compatibility-note {
             margin-top: 30px;
             background-color: #fff8e1;
@@ -168,37 +180,39 @@
             color: #f57f17;
             font-family: 'Fredoka One', cursive;
         }
-        .compatibility-note ol {
-            padding-left: 20px;
-            margin-bottom: 0;
-        }
-        .compatibility-note li {
-            margin-bottom: 5px;
-        }
-
+        .compatibility-note ol { padding-left: 20px; margin-bottom: 0; }
+        .compatibility-note li { margin-bottom: 5px; }
     </style>
 </head>
 <body>
-
     <div id="sumario-livro">
-        
         <header class="book-header">
             <h1 class="book-title">CASA BILÍNGUE KIDS</h1>
             <div class="book-subtitle">O jeito mais natural de criar um pequeno bilíngue</div>
             <div class="author-name">Autor: <strong>Fábio de Almeida</strong></div>
         </header>
-
+        
         <h3 style="color: #34495e; font-family: 'Fredoka One'; margin-bottom: 20px;">SUMÁRIO DAS AVENTURAS</h3>
-
+        
         <ul class="chapter-list">
-            <!-- Aula 0 -->
-             <li class="chapter-item aula-zero">
+            <!-- Aula 0 --> 
+            <li class="chapter-item aula-zero">
                 <a href="https://espaco-liberdade.github.io/Kids0/" class="chapter-link">
                     <span class="chapter-number">00</span>
                     <span class="chapter-icon">🔮</span>
                     <span class="chapter-title">Aula 0: Desvendando os Sons e o Nosso Jeito de Ensinar</span>
                 </a>
             </li>
+
+            <!-- NOVO MÓDULO: SÍLABAS BILÍNGUE -->
+            <li class="chapter-item syllable-module">
+                <a href="https://espaco-liberdade.github.io/silabasbilingue/" class="chapter-link">
+                    <span class="chapter-number">⭐</span>
+                    <span class="chapter-icon">🔤</span>
+                    <span class="chapter-title">MÓDULO ESPECIAL: Sílabas Bilíngue (Menu de Aulas)</span>
+                </a>
+            </li>
+
             <!-- Aula 1 -->
             <li class="chapter-item">
                 <a href="https://espaco-liberdade.github.io/Kids1/" class="chapter-link">
@@ -328,25 +342,20 @@
                 </a>
             </li>
         </ul>
-
+        
         <div class="compatibility-note">
             <h4>🔊 Compatibilidade de áudio</h4>
             <p>Para melhor funcionamento dos áudios, utilize o <strong>Google Chrome (Android/PC)</strong> ou <strong>Safari (iPhone)</strong>.</p>
-            <p>👉 <strong>Se estiver usando outro navegador no Android e o som não sair:</strong></p>
             <ol>
                 <li>Abra as <strong>Configurações</strong> do celular.</li>
                 <li>Vá em <strong>Aplicativos</strong> → <strong>Aplicativos padrão</strong>.</li>
-                <li>Toque em <strong>Navegador</strong> (App de Browser).</li>
-                <li>Selecione <strong>Google Chrome</strong>.</li>
-                <li>Feche e abra novamente o link da aula.</li>
+                <li>Selecione <strong>Google Chrome</strong> como navegador padrão.</li>
             </ol>
         </div>
-
+        
         <div class="footer-note">
             <p>Parabéns por completar essa jornada bilíngue!</p>
         </div>
-
     </div>
-
 </body>
 </html>
